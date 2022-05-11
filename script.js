@@ -12,7 +12,8 @@ for (i = 1; i <= 16 * 16; i++) {
 }
 
 function changeColor(e) {
-    this.style.background = "black";
+    let customColor = randomColor()
+    this.style.background = `${customColor}`;
 }
 
 btn.addEventListener('click', newGrid)
@@ -44,3 +45,10 @@ function newGrid() {
  
     
 }
+
+function randomColor() {
+    let red = Math.floor(Math.random() * 255)
+    let blue = Math.floor(Math.random() * 255)
+    let green = Math.floor(Math.random() * 255)
+    return `rgb(${red}, ${blue}, ${green})`;
+} 
