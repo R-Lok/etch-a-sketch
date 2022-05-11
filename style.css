@@ -1,0 +1,28 @@
+
+
+h1 {
+    text-align: center;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.drawingField {
+    height: 800px;
+    width: 800px;
+    border: solid black 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    border: 1px solid black;
+}
