@@ -57,7 +57,7 @@ function changeColor(e) {
             let customColor = randomColor()
             this.style.background = `${customColor}`;
         } else if (currentBrush === "black") {
-            this.style.background = "black";
+            this.style.background = "rgb(0, 0, 0)";
         } else if (currentBrush === "pencil") {
             let currentRGBA = this.style.backgroundColor;
             switch(currentRGBA) {
