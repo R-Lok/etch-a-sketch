@@ -3,9 +3,20 @@ let newCanvasBtn = document.querySelector('.newCanvas');
 let blackBrushBtn = document.querySelector('.blackBrush');
 let pencilBtn = document.querySelector('.pencil');
 let rainbowBtn = document.querySelector('.rainbowBrush')
-
 let currentBrush = 'black'
+let mouseState = ""
 
+//set mouse state depending on currently up or down
+document.body.addEventListener('mousedown', setMouseDown)
+document.body.addEventListener('mouseup', setMouseUp)
+
+function setMouseDown() {
+    mouseState = "down"
+}
+
+function setMouseUp() {
+    mouseState = "up"
+}
 
 // generate 16 x 16 grid on page load
 for (i = 1; i <= 16 * 16; i++) {
@@ -37,52 +48,57 @@ pencilBtn.addEventListener('click', changePencil);
 rainbowBtn.addEventListener('click', changeRainbowBrush);
 
 function changeColor(e) {
-
-    if (currentBrush === "rainbow") {
-        let customColor = randomColor()
-        this.style.background = `${customColor}`;
-    } else if (currentBrush === "black") {
-        this.style.background = "black";
-    } else if (currentBrush === "pencil") {
-        let currentRGBA = this.style.backgroundColor;
-        console.log(this.style.background)
-        switch(currentRGBA) {
-            case 'rgba(0, 0, 0, 0.1)':
-                this.style.background = 'rgba(0, 0, 0, 0.2)';
-                break;
-            case 'rgba(0, 0, 0, 0.2)':
-                this.style.background = 'rgba(0, 0, 0, 0.3)';
-                break;
-            case 'rgba(0, 0, 0, 0.3)':
-                this.style.background = 'rgba(0, 0, 0, 0.4)';
-                break;
-            case 'rgba(0, 0, 0, 0.4)':
-                this.style.background = 'rgba(0, 0, 0, 0.5)';
-                break;
-            case 'rgba(0, 0, 0, 0.5)':
-                this.style.background = 'rgba(0, 0, 0, 0.6)';
-                break;
-            case 'rgba(0, 0, 0, 0.6)':
-                this.style.background = 'rgba(0, 0, 0, 0.7)';
-                break;
-            case 'rgba(0, 0, 0, 0.7)':
-                this.style.background = 'rgba(0, 0, 0, 0.8)';
-                break;
-            case 'rgba(0, 0, 0, 0.8)':
-                this.style.background = 'rgba(0, 0, 0, 0.9)';
-                break;
-            case 'rgba(0, 0, 0, 0.9)':
-                this.style.background = 'rgb(0, 0, 0)';
-                break;
-            case 'rgb(0, 0, 0)':
-                this.style.background = 'rgba(0, 0, 0)';
-                break;
-            default:
-                this.style.background = 'rgba(0, 0, 0, 0.1)';
+    if (mouseState === 'down') {
+        if (currentBrush === "rainbow") {
+            let customColor = randomColor()
+            this.style.background = `${customColor}`;
+        } else if (currentBrush === "black") {
+            this.style.background = "black";
+        } else if (currentBrush === "pencil") {
+            let currentRGBA = this.style.backgroundColor;
+            switch(currentRGBA) {
+                case 'rgba(0, 0, 0, 0.1)':
+                    this.style.background = 'rgba(0, 0, 0, 0.2)';
+                    break;
+                case 'rgba(0, 0, 0, 0.2)':
+                    this.style.background = 'rgba(0, 0, 0, 0.3)';
+                    break;
+                case 'rgba(0, 0, 0, 0.3)':
+                    this.style.background = 'rgba(0, 0, 0, 0.4)';
+                    break;
+                case 'rgba(0, 0, 0, 0.4)':
+                    this.style.background = 'rgba(0, 0, 0, 0.5)';
+                    break;
+                case 'rgba(0, 0, 0, 0.5)':
+                    this.style.background = 'rgba(0, 0, 0, 0.6)';
+                    break;
+                case 'rgba(0, 0, 0, 0.6)':
+                    this.style.background = 'rgba(0, 0, 0, 0.7)';
+                    break;
+                case 'rgba(0, 0, 0, 0.7)':
+                    this.style.background = 'rgba(0, 0, 0, 0.8)';
+                    break;
+                case 'rgba(0, 0, 0, 0.8)':
+                    this.style.background = 'rgba(0, 0, 0, 0.9)';
+                    break;
+                case 'rgba(0, 0, 0, 0.9)':
+                    this.style.background = 'rgb(0, 0, 0)';
+                    break;
+                case 'rgb(0, 0, 0)':
+                    this.style.background = 'rgba(0, 0, 0)';
+                    break;
+                default:
+                    this.style.background = 'rgba(0, 0, 0, 0.1)';
+            }
         }
+    } else {
+        return;
     }
+    
 }
 
+
+// create new grid on 'New Canvas' button press
 newCanvasBtn.addEventListener('click', newGrid)
 
 function newGrid() {
@@ -112,7 +128,7 @@ function newGrid() {
  
     
 }
-
+// determine color randomly 
 function randomColor() {
     let red = Math.floor(Math.random() * 255)
     let blue = Math.floor(Math.random() * 255)
