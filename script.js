@@ -25,6 +25,7 @@ for (i = 1; i <= 16 * 16; i++) {
     square.style.width = "50px";
     square.style.boxSizing = "border-box";
     square.classList.add("box");
+    square.setAttribute('draggable', false);
     square.addEventListener('mouseover', changeColor);
     drawingField.appendChild(square);
 }
@@ -105,7 +106,7 @@ function newGrid() {
     squaresPerSide = prompt('How many squares per side? (Max 100)');
 
     if (squaresPerSide === null) {
-        return;       
+        return;
     }
 
     if (squaresPerSide > 100) {
@@ -121,6 +122,7 @@ function newGrid() {
         square.style.width = `${squareWidthHeight}px`;
         square.style.boxSizing = "border-box";
         square.classList.add("box");
+        square.setAttribute('draggable', false);
         square.addEventListener('mouseover', changeColor);
         drawingField.appendChild(square);
     }
