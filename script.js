@@ -44,8 +44,43 @@ function changeColor(e) {
     } else if (currentBrush === "black") {
         this.style.background = "black";
     } else if (currentBrush === "pencil") {
+        let currentRGBA = this.style.backgroundColor;
+        console.log(this.style.background)
+        switch(currentRGBA) {
+            case 'rgba(0, 0, 0, 0.1)':
+                this.style.background = 'rgba(0, 0, 0, 0.2)';
+                break;
+            case 'rgba(0, 0, 0, 0.2)':
+                this.style.background = 'rgba(0, 0, 0, 0.3)';
+                break;
+            case 'rgba(0, 0, 0, 0.3)':
+                this.style.background = 'rgba(0, 0, 0, 0.4)';
+                break;
+            case 'rgba(0, 0, 0, 0.4)':
+                this.style.background = 'rgba(0, 0, 0, 0.5)';
+                break;
+            case 'rgba(0, 0, 0, 0.5)':
+                this.style.background = 'rgba(0, 0, 0, 0.6)';
+                break;
+            case 'rgba(0, 0, 0, 0.6)':
+                this.style.background = 'rgba(0, 0, 0, 0.7)';
+                break;
+            case 'rgba(0, 0, 0, 0.7)':
+                this.style.background = 'rgba(0, 0, 0, 0.8)';
+                break;
+            case 'rgba(0, 0, 0, 0.8)':
+                this.style.background = 'rgba(0, 0, 0, 0.9)';
+                break;
+            case 'rgba(0, 0, 0, 0.9)':
+                this.style.background = 'rgb(0, 0, 0)';
+                break;
+            case 'rgb(0, 0, 0)':
+                this.style.background = 'rgba(0, 0, 0)';
+                break;
+            default:
+                this.style.background = 'rgba(0, 0, 0, 0.1)';
+        }
     }
-    
 }
 
 newCanvasBtn.addEventListener('click', newGrid)
