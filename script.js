@@ -27,6 +27,9 @@ for (i = 1; i <= 16 * 16; i++) {
     square.classList.add("box");
     square.setAttribute('draggable', false);
     square.addEventListener('mouseover', changeColor);
+    square.addEventListener('mousedown', function(e){
+        e.preventDefault();
+    })
     drawingField.appendChild(square);
 }
 
@@ -122,8 +125,12 @@ function newGrid() {
         square.style.width = `${squareWidthHeight}px`;
         square.style.boxSizing = "border-box";
         square.classList.add("box");
-        square.setAttribute('draggable', false);
+        square.setAttribute('draggable', "false");
         square.addEventListener('mouseover', changeColor);
+        square.addEventListener('mousedown', function(e){
+            e.preventDefault();
+        })
+        
         drawingField.appendChild(square);
     }
 }
